@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="shortcut icon" type="image/x-icon" href="-cms/favicon.ico">
+      
+    <script src="-cms/jquery_1.11.3.min.js"></script>
+    <script src="-cms/showdown.min.js"></script>
+    <link href="-cms/press-main.css" rel="stylesheet">
+
+    <title>Press</title>
+  </head>
+  <body>
+
+<nav id="mainMenu" class="open"></nav>
+<div id="context"></div>
+<div id="pageContent" class="dim"> </div>
+<div id="nextNav"></div>
+
+
+<script>    
+$(document).ready(function(){
+    var documentTitle
+    var fileName
+    var g_contentLocation = "content/";
+    
+    $("#mainMenu").load(g_contentLocation + "-menu.md", function(content){
+        // Load the main menu file and add the close menu button
+        var converter = new showdown.Converter();
+        $(this).html(converter.makeHtml(content)).append("<span id='closeMenu'>");
+        
+        
+        // add the document title once the menu is loaded
+        documentTitle = $("#mainMenu").find("h1").text();
+        $("#context").append("<span id='openMenu'></span><span>" + documentTitle + "</span>");
+        document.title = documentTitle;
+
+        //check to see if this is a bookmarked page or not. Default the menu open
+        var thisURL = window.location.href;
+        if (thisURL.indexOf("#") == -1){
+             showMenu(); 
+            $("#closeMenu").hide();
+        } else {
+            hideMenu();
+            loadContent(getFile(getFileName()));
+        }
+        
+         //set up the menu function buttons
+        $("#closeMenu").click(function(){
+            hideMenu();
+        });
+         $("#openMenu").click(function(){
+            showMenu(); 
+        });
+        $("#mainMenu a").click(function(){
+            hideMenu();
+            fileName = getFile($(this).attr("href"));
+            loadContent(fileName);
+        });
+        
+    });
+    function getFile(path){
+        var whichFile = g_contentLocation + path.replace("#","") + ".md";
+        return whichFile;
+    }
+    function loadContent(whichFile){
+        window.scrollTo(0,0);
+
+        $("#pageContent").load(whichFile, function(content){
+              var converter = new showdown.Converter();
+                converter.setOption('tables', 'true');
+              $(this).html(converter.makeHtml(content));
+            document.title = $(this).find("h1").text() + " | " + documentTitle;
+            
+            $("#nextNav").empty();
+        
+            $("#mainMenu li").each(function(){
+                var thisURL = getFileName()
+                if ($(this).find("a").attr("href") == thisURL) {
+                    var prev = $(this).prev().html();
+                    var next = $(this).next().html();
+                    if (prev != undefined) {prev = "<span>" + prev + "</span>";} else {prev = "<span></span>";}
+                    if (next != undefined) {next = "<span>" + next + "</span>";} else {next = "<span></span>";}
+                    $("#nextNav").append(prev + next);
+                }
+            })   
+            $("#pageContent a").click(function(){
+                fileName = getFile($(this).attr("href"));
+                loadContent(fileName);
+            });
+            $("#nextNav ul a").click(function(){
+                hideMenu();
+                fileName = getFile($(this).attr("href"));
+                loadContent(fileName);
+            });
+            $("table").each(function(){
+               if($(this).find("th").html() != "") {
+                   $(this).addClass("tableData");
+               }
+            });
+            $("iframe").each(function(){
+                if ($(this).attr("src").indexOf("vimeo") != -1){
+                $(this).wrap("<div class='videoBlock'></div>");
+                }
+            })
+            
+        });
+    }
+    function showMenu(){
+        $("#context").hide();
+        $("#pageContent").addClass("dim");
+        $("#mainMenu").addClass("open");
+        $("#closeMenu").show();
+        $("#nextNav").hide();
+    }
+    function hideMenu(){
+        $("#context").show();
+        $("#pageContent").removeClass("dim");
+        $("#mainMenu").removeClass("open");
+        $("#nextNav").show();
+
+    }
+    function getFileName() {
+        var thisURL = window.location.href;
+        return "#" + thisURL.substring(thisURL.indexOf("#")+1);
+    }
+}); 
+    
+</script>
+
+      
+</body>
+</html>

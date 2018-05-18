@@ -1,0 +1,195 @@
+@import url("https://use.typekit.net/cfv6ysa.css");
+
+body {font-family:"museo-sans";font-style: normal;font-weight: 300;font-size:10px;margin:0;padding:0;overflow-x: hidden;background-color: #fff}
+
+p {font-family:"museo-sans";font-style: normal;font-weight: 300;font-size:1.1rem;line-height: 1.6em;color:#424143;margin-right:5vw;margin-left:5vw;}
+
+a {color:#89A84F}
+h1 {font-family: "museo-sans-display",sans-serif;font-style: normal;font-weight: 200;font-size:6em;color: #ED9B33; margin: 0 0 0 0;padding: 0 0 0 0 }
+
+h2,
+#context {font-family: "museo-sans",sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size:.8rem;
+    text-transform: uppercase;
+    padding-top:2em;
+    letter-spacing: .09em;
+    color:#BE5400;
+    margin-left:5vw;
+    }
+
+
+/* Callout, left margin */
+h4 {font-size:.8rem;margin: 0 0 3rem 0;color:#424143}
+/* Callout, full */
+h5 {font-size:.8rem; margin:0;width: 100vw;padding:0 5vw;color:#424143}
+/* Callout, right margin */
+h6 {font-size:.8rem;line-height: 1.15rem;margin:.8rem 0 0 0;position: absolute;width:17vw;right:7vw;color:#424143}
+
+p > img,
+h4 > img,
+h5 > img,
+h6 > img {width:100%}
+h5 > img {transform: translateX(-5vw);margin-bottom: 1vw; }
+
+
+.dim {filter:  /*brightness(.7)*/ blur(10px);}
+
+
+#pageContent {background: #fff;}
+#context {position: absolute;top:0;left:0;margin-left:0;}
+
+
+
+/* Structural */
+
+nav { display: none;
+    grid-template-columns: 100%;
+    grid-template-rows:auto auto 1fr 5rem;
+        background: rgba(255,255,255,.7);position: fixed;left:0;z-index: 1000;overflow: hidden;width:88vw;height:88vh;top:0;overflow-y: scroll;border-top: 6vh solid #ED9B33;border-bottom: 6vh solid #ED9B33;border-left: 6vw solid #ED9B33;border-right: 6vw solid #ED9B33;
+}
+nav.open {display:grid;}
+
+nav h1 {font-size: 2rem;margin: 0;padding:0;align-self:flex-end}
+nav h1 > img {display: block;margin-bottom: 2vh}
+nav p {margin:0;width:auto;font-size: .8rem;}
+nav blockquote {margin:0;} 
+nav blockquote > p {font-size:.6rem}
+nav blockquote p:nth-child(2) {text-transform: uppercase;letter-spacing: .1rem;color: #7594B3;font-weight: 900;font-size: .7rem}
+nav ul {font-weight: 100; font-size: 1.5rem;margin:0;padding:0 2rem 0 0;list-style-type: none;columns: 1;}
+    nav ul li {margin-bottom: 2rem}
+    nav ul li a {text-decoration:none}
+
+#openMenu, #closeMenu {
+    width: 2rem;height:2rem;transition: margin .4s;
+background: url(menu.svg) top left;cursor: pointer;
+}
+#openMenu:hover {margin-top: .3rem;margin-bottom: 0;}
+#openMenu {margin-bottom: .3rem;margin-top: 0;}
+
+#closeMenu:hover {margin-top: 0;margin-bottom: .3rem;}
+#closeMenu {margin-bottom: 0;margin-top: .3rem;}
+
+#closeMenu {position: absolute;transform: rotate(180deg); top: 0;left: 50%;z-index: 1000}
+#context {display: flex;align-items: center}
+#context span {margin-left:2em}
+
+#nextNav span {flex: 100%;align-items: stretch;}
+#nextNav a {flex-grow:1;font-size:1.5rem;font-weight: 100;text-decoration: none; display: block;padding: 3rem 4rem;position: relative;}
+#nextNav span:first-child {border-right: 1px solid #E4E4E2;}
+#nextNav span:first-child a:before {
+    content: "";
+    background: #ff0;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;left:1rem;z-index: 100;
+    background: url(menu.svg) top left;
+    transform: rotate(90deg);
+}
+
+#nextNav span:last-child a {text-align: right;}
+#nextNav span:last-child a:before {
+    content: "";
+    background: #ff0;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;right:1rem;z-index: 100;
+    background: url(menu.svg) top left;
+    transform: rotate(-90deg);
+}
+#nextNav {display: flex ;border: 1px solid #E4E4E2;border-left:none;border-right: none;margin-top:5rem;}
+
+table {margin:2vh 5vw;width:90vw;font-size:1.1rem; color:#424143;padding:0;border-collapse: collapse;}
+.tableData th {padding:.5rem;color: #ED9B33;font-weight: 100;font-size:1.3rem;border-bottom: 1px solid #ED9B33;}
+.tableData td {padding:.5rem;border-bottom: 1px solid #E4E4E2;}
+table > img {width: auto}
+
+
+ol,ul {margin:0 5vw;font-size:1.1rem}
+li {margin-bottom:.5rem;line-height: 1.6em;color:#424143}
+li ul,
+li ol {margin:1em 0 0;font-size:.9em}
+li ul li {list-style-type: disc}
+
+code {background:#E2E3E2;padding:0 .5rem;color: #424143}
+
+/*width="640" height="360" */
+
+.videoBlock {position: relative;overflow: hidden;
+    padding-top: 39%;margin-right:5vw;margin-left:5vw;margin:1rem 0}
+.videoBlock iframe {    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;}
+
+/* Phone adjustments */
+@media (max-width: 600px){
+    h1 {font-size: 3.5rem;line-height: 3.5rem; font-family:"museo-sans";font-weight: 100; margin:5rem 5vw 2rem 5vw;}
+    h6 {margin: 0;position:static;width:auto;right: auto}
+    p {font-size:2em;line-height: 1.6em;}
+    h2, h3 {font-size:1.6em;letter-spacing: .09em;}
+    h4, h5 {font-size: 1.6em;font-style: italic;font-weight: 500}
+    h4 {padding-left:5vw}
+    h4 > img {width: 100vw;transform: translateX(-5vw)}
+    h6 {font-size: 2.8em;/*background-color: #FEEBCC*/;padding: 5vw;font-style: italic;font-weight: 100;line-height: 1.6em}
+    
+    nav h1 {margin:4rem 2rem 0 2rem;font-size: 2.3rem;line-height: 2.5rem}
+    nav p {margin:0 2rem 0 2rem;font-size: 1rem;margin-top:2vh}
+    nav blockquote {margin-left:2rem;} 
+    nav blockquote > p {margin:0}
+    nav ul {margin: 3rem 10vw 3rem 2rem;columns: 1;font-size: 1.4rem;} 
+    
+    nav {top:0;left:0;width: 98vw;height: 98vh;background:#fff;border-top: 1vh solid #ED9B33;border-bottom: 1vh solid #ED9B33;border-left: 1vw solid #ED9B33;border-right: 1vw solid #ED9B33;}
+    nav:before {display: none;}
+    #closeMenu {top:1rem}
+
+}
+
+@media (max-width: 1000px) and (min-width: 600px){
+    h2, p, h4, table, ol,ul,.videoBlock {margin-left:1rem;width:70vw}
+    h5 {padding-left:1rem}
+    h5 > img {transform: translateX(-1rem); }
+    h1 {padding: 4rem 0 0 1rem;font-size: 3rem }
+        h6 {width:20vw;right:4vw}
+    
+    nav h1 {margin:4rem 20vw 0 3rem;font-size: 2.5rem;line-height: 2.5rem}
+    nav p {margin:0 30vw 0 3rem;font-size: 1rem;margin-top:2vh}
+    nav blockquote {margin-left:3rem;} 
+    nav blockquote > p {margin:0}
+    nav ul {margin: 3rem 10vw 3rem 3rem;columns: 2;font-size: 1.2rem}    
+    #closeMenu {top:1rem;left:3rem}
+}
+@media (max-width: 1200px) and (min-width: 1000px){
+    h1 {padding: 6rem 0 2rem 10vw}
+    h2, p, h4, table,ol,ul,.videoBlock {width:60vw;margin-left:15vw}
+    h5 {padding-left:1rem}
+    h5 > img {transform: translateX(-1rem); }
+    h6 {right:4vw}
+    
+    nav ul {columns: 2;}
+    
+    nav h1 {margin:5rem 30vw 0 3rem;font-size: 3.5vw;line-height: 2.5rem}
+    nav p {margin:0 40vw 0 3rem;font-size: 1.2vw;margin-top:2vh}
+    nav blockquote {margin-left:3rem;} 
+    nav blockquote > p {margin:0}
+    nav ul {margin: 3rem 10vw 3rem 3rem;columns: 1;font-size: 1.8vw}
+    #closeMenu {top:2rem; left:3rem}
+}
+@media (min-width: 1200px) {
+    h1 {padding: 6rem 0 2rem 15vw}
+    h1 > img {margin-left:50%;transform: translateX(-50%);}
+    h2, p, h4, table,ol,ul,.videoBlock {width:50vw;margin-left:25vw}
+    h5 {padding-left:1rem}
+    h5 > img {transform: translateX(-1rem); }
+    h6 {right:4vw}
+    
+    nav h1 {text-align: center;font-size: 3.5vw;margin-top:6rem}
+    nav p {margin: 0 10rem;font-size: 1.2vw;margin-top:2vh}
+    nav blockquote {text-align: center} 
+    nav blockquote > p {margin:0}
+    nav ul {margin: 3vh 10vw;width:auto;columns: 1;font-size: 2.4vw;align-self: center}
+    #closeMenu {top:2rem;}
+}
